@@ -2125,6 +2125,7 @@ module.exports = {
         "security/api-server-auth",
         "security/dp-auth",
         "security/zone-ingress-auth",
+        "security/dp-membership",
       ]
     },
     {
