@@ -91,7 +91,7 @@ To access {{site.mesh_product_name}} you can navigate to [`127.0.0.1:5681`](http
 You can use the `kumactl` CLI to perform **read and write** operations on {{site.mesh_product_name}} resources. The `kumactl` binary is a client to the {{site.mesh_product_name}} HTTP API. For example:
 
 ```sh
-docker run --net="host" kumahq/kumactl:<version> kumactl get meshes
+docker run --net="host" kumahq/kumactl:<version> {% if_version lte:2.2.x %}kumactl {% endif_version%}get meshes
 NAME          mTLS      METRICS      LOGGING   TRACING
 default       off       off          off       off
 ```
@@ -106,7 +106,7 @@ mtls:
   backends:
   - name: ca-1
     type: builtin" | docker run -i --net="host" \
-  docker.io/kumahq/kumactl:<version> kumactl apply -f -
+  docker.io/kumahq/kumactl:<version> {% if_version lte:2.2.x %}kumactl {% endif_version%}apply -f -
 ```
 
 **Note**: we are running `kumactl` from the Docker container on the same network as the `host`, but most likely you want to download a compatible version of {{site.mesh_product_name}} for the machine where you will be executing the commands.
